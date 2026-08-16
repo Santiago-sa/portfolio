@@ -7,11 +7,15 @@ const navigationItems = [
   },
   {
     label: "Sobre mí",
-    href: "#sobre-mi",
+    href: "#about",
   },
   {
     label: "Skills",
     href: "#skills",
+  },
+  {
+    label: "Experiencia",
+    href: "#experience",
   },
   {
     label: "Proyectos",
@@ -23,7 +27,7 @@ const navigationItems = [
   },
   {
     label: "Contacto",
-    href: "#contacto",
+    href: "#contact",
   },
 ];
 

@@ -1,0 +1,550 @@
+import { FiSend } from "react-icons/fi";
+
+import { contactItems } from "../../content/contact";
+import { ContactItem } from "../../components/ui/ContactItem";
+
+export function Contact() {
+  const handleSubmit = (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    const formData = new FormData(form);
+
+    const name =
+      String(formData.get("name") ?? "");
+
+    const email =
+      String(formData.get("email") ?? "");
+
+    const subject =
+      String(formData.get("subject") ?? "");
+
+    const message =
+      String(formData.get("message") ?? "");
+
+    const body = `
+Nombre: ${name}
+Email: ${email}
+
+${message}
+    `.trim();
+
+    window.location.href =
+      `mailto:santiagoalvarez012@gmail.com?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <section
+      id="contact"
+      style={{
+        padding: "70px 0 90px",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1140px",
+          margin: "0 auto",
+          padding: "0 28px",
+        }}
+      >
+        {/* =========================================================
+            ENCABEZADO
+        ========================================================= */}
+
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "34px",
+          }}
+        >
+          {/* LABEL */}
+
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+
+              fontFamily:
+                "'JetBrains Mono', monospace",
+
+              fontSize: "10px",
+
+              letterSpacing: "0.2em",
+
+              textTransform: "uppercase",
+
+              color: "#00d4ff",
+
+              background:
+                "rgba(0,212,255,0.06)",
+
+              border:
+                "1px solid rgba(0,212,255,0.16)",
+
+              padding: "5px 14px",
+
+              borderRadius: "4px",
+
+              marginBottom: "18px",
+            }}
+          >
+            <span
+              style={{
+                width: "4px",
+                height: "4px",
+
+                borderRadius: "50%",
+
+                background: "#00d4ff",
+
+                display: "inline-block",
+
+                boxShadow:
+                  "0 0 6px #00d4ff",
+              }}
+            />
+
+            // contacto
+          </span>
+
+          {/* TÍTULO */}
+
+          <h2
+            style={{
+              fontFamily:
+                "'Outfit', sans-serif",
+
+              fontSize:
+                "clamp(28px, 4vw, 40px)",
+
+              fontWeight: 700,
+
+              color: "#e8e8f0",
+
+              margin: "0 0 12px",
+
+              lineHeight: 1.15,
+
+              letterSpacing: "-0.02em",
+            }}
+          >
+            ¿Tienes un proyecto en mente?
+          </h2>
+
+          {/* DESCRIPCIÓN */}
+
+          <p
+            style={{
+              color: "#7070a0",
+
+              fontSize: "15px",
+
+              maxWidth: "600px",
+
+              margin: "0 auto",
+
+              lineHeight: 1.8,
+            }}
+          >
+            Estoy abierto a nuevas oportunidades,
+            proyectos y colaboraciones.
+          </p>
+        </div>
+
+        {/* =========================================================
+            CONTENIDO
+        ========================================================= */}
+
+        <div
+          style={{
+            display: "grid",
+
+            gridTemplateColumns:
+              "1fr 1.28fr",
+
+            gap: "58px",
+
+            alignItems: "start",
+          }}
+        >
+          {/* =======================================================
+              INFORMACIÓN DE CONTACTO
+          ======================================================= */}
+
+          <div>
+            <h3
+              style={{
+                fontFamily:
+                  "'Outfit', sans-serif",
+
+                fontSize: "22px",
+
+                fontWeight: 700,
+
+                color: "#e8e8f0",
+
+                margin: "0 0 14px",
+              }}
+            >
+              Hablemos
+            </h3>
+
+            <p
+              style={{
+                color: "#7070a0",
+
+                fontSize: "15px",
+
+                lineHeight: 1.8,
+
+                maxWidth: "460px",
+
+                margin: "0 0 28px",
+              }}
+            >
+              Estoy disponible para proyectos
+              freelance, posiciones Full Stack y
+              colaboraciones.
+            </p>
+
+            {/* CONTACTOS */}
+
+            {contactItems.map((item) => (
+              <ContactItem
+                key={item.id}
+                item={item}
+              />
+            ))}
+          </div>
+
+          {/* =======================================================
+              FORMULARIO
+          ======================================================= */}
+
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              background:
+                "rgba(255,255,255,0.025)",
+
+              border:
+                "1px solid rgba(255,255,255,0.08)",
+
+              borderRadius: "12px",
+
+              padding: "24px",
+            }}
+          >
+            {/* NOMBRE + EMAIL */}
+
+            <div
+              style={{
+                display: "grid",
+
+                gridTemplateColumns:
+                  "1fr 1fr",
+
+                gap: "16px",
+
+                marginBottom: "16px",
+              }}
+            >
+              {/* NOMBRE */}
+
+              <div>
+                <label
+                  htmlFor="contact-name"
+                  style={{
+                    display: "block",
+
+                    fontSize: "11px",
+
+                    color: "#7070a0",
+
+                    marginBottom: "7px",
+                  }}
+                >
+                  Nombre
+                </label>
+
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Tu nombre"
+                  style={{
+                    width: "100%",
+
+                    boxSizing: "border-box",
+
+                    height: "47px",
+
+                    padding: "0 14px",
+
+                    background:
+                      "rgba(255,255,255,0.025)",
+
+                    border:
+                      "1px solid rgba(255,255,255,0.09)",
+
+                    borderRadius: "7px",
+
+                    outline: "none",
+
+                    color: "#e8e8f0",
+
+                    fontFamily:
+                      "'Inter', sans-serif",
+
+                    fontSize: "13px",
+                  }}
+                />
+              </div>
+
+              {/* EMAIL */}
+
+              <div>
+                <label
+                  htmlFor="contact-email"
+                  style={{
+                    display: "block",
+
+                    fontSize: "11px",
+
+                    color: "#7070a0",
+
+                    marginBottom: "7px",
+                  }}
+                >
+                  Email
+                </label>
+
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="tu@email.com"
+                  style={{
+                    width: "100%",
+
+                    boxSizing: "border-box",
+
+                    height: "47px",
+
+                    padding: "0 14px",
+
+                    background:
+                      "rgba(255,255,255,0.025)",
+
+                    border:
+                      "1px solid rgba(255,255,255,0.09)",
+
+                    borderRadius: "7px",
+
+                    outline: "none",
+
+                    color: "#e8e8f0",
+
+                    fontFamily:
+                      "'Inter', sans-serif",
+
+                    fontSize: "13px",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* ASUNTO */}
+
+            <div
+              style={{
+                marginBottom: "16px",
+              }}
+            >
+              <label
+                htmlFor="contact-subject"
+                style={{
+                  display: "block",
+
+                  fontSize: "11px",
+
+                  color: "#7070a0",
+
+                  marginBottom: "7px",
+                }}
+              >
+                Asunto
+              </label>
+
+              <input
+                id="contact-subject"
+                name="subject"
+                type="text"
+                required
+                placeholder="¿En qué puedo ayudarte?"
+                style={{
+                  width: "100%",
+
+                  boxSizing: "border-box",
+
+                  height: "47px",
+
+                  padding: "0 14px",
+
+                  background:
+                    "rgba(255,255,255,0.025)",
+
+                  border:
+                    "1px solid rgba(255,255,255,0.09)",
+
+                  borderRadius: "7px",
+
+                  outline: "none",
+
+                  color: "#e8e8f0",
+
+                  fontFamily:
+                    "'Inter', sans-serif",
+
+                  fontSize: "13px",
+                }}
+              />
+            </div>
+
+            {/* MENSAJE */}
+
+            <div
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              <label
+                htmlFor="contact-message"
+                style={{
+                  display: "block",
+
+                  fontSize: "11px",
+
+                  color: "#7070a0",
+
+                  marginBottom: "7px",
+                }}
+              >
+                Mensaje
+              </label>
+
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                placeholder="Cuéntame sobre tu proyecto..."
+                rows={4}
+                style={{
+                  width: "100%",
+
+                  boxSizing: "border-box",
+
+                  padding: "14px",
+
+                  resize: "vertical",
+
+                  minHeight: "88px",
+
+                  background:
+                    "rgba(255,255,255,0.025)",
+
+                  border:
+                    "1px solid rgba(255,255,255,0.09)",
+
+                  borderRadius: "7px",
+
+                  outline: "none",
+
+                  color: "#e8e8f0",
+
+                  fontFamily:
+                    "'Inter', sans-serif",
+
+                  fontSize: "13px",
+
+                  lineHeight: 1.6,
+                }}
+              />
+            </div>
+
+            {/* BOTÓN */}
+
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+
+                height: "49px",
+
+                border: "none",
+
+                borderRadius: "7px",
+
+                background:
+                  "linear-gradient(135deg,#68c9ee,#4e9cc1)",
+
+                color: "#061018",
+
+                fontFamily:
+                  "'Inter', sans-serif",
+
+                fontSize: "13px",
+
+                fontWeight: 600,
+
+                cursor: "pointer",
+
+                display: "flex",
+
+                alignItems: "center",
+
+                justifyContent: "center",
+
+                gap: "8px",
+
+                transition:
+                  "all 0.25s ease",
+              }}
+              onMouseEnter={(event) => {
+                const element =
+                  event.currentTarget;
+
+                element.style.transform =
+                  "translateY(-2px)";
+
+                element.style.boxShadow =
+                  "0 10px 30px rgba(0,212,255,0.18)";
+              }}
+              onMouseLeave={(event) => {
+                const element =
+                  event.currentTarget;
+
+                element.style.transform = "";
+
+                element.style.boxShadow = "";
+              }}
+            >
+              <FiSend size={15} />
+
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
