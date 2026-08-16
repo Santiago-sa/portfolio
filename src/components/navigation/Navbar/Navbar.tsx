@@ -1,31 +1,35 @@
-import { Container } from '@/components/layout/Container'
+import { Container } from "@/components/layout/Container";
 
 const navigationItems = [
   {
-    label: 'Inicio',
-    href: '#inicio',
+    label: "Inicio",
+    href: "#inicio",
   },
   {
-    label: 'Sobre mí',
-    href: '#sobre-mi',
+    label: "Sobre mí",
+    href: "#about",
   },
   {
-    label: 'Skills',
-    href: '#skills',
+    label: "Skills",
+    href: "#skills",
   },
   {
-    label: 'Proyectos',
-    href: '#proyectos',
+    label: "Experiencia",
+    href: "#experience",
   },
   {
-    label: 'Proceso',
-    href: '#proceso',
+    label: "Proyectos",
+    href: "#proyectos",
   },
   {
-    label: 'Contacto',
-    href: '#contacto',
+    label: "Proceso",
+    href: "#proceso",
   },
-]
+  {
+    label: "Contacto",
+    href: "#contact",
+  },
+];
 
 export function Navbar() {
   return (
@@ -93,7 +97,6 @@ export function Navbar() {
           {/* Right side */}
 
           <div className="flex items-center gap-5">
-
             {/* Language */}
 
             <div className="hidden items-center gap-2 font-mono text-[10px] sm:flex">
@@ -108,9 +111,7 @@ export function Navbar() {
                 ES
               </button>
 
-              <span className="text-[#4848a0]">
-                /
-              </span>
+              <span className="text-[#4848a0]">/</span>
 
               <button
                 type="button"
@@ -170,14 +171,11 @@ export function Navbar() {
                 lg:hidden
               "
             >
-              <span className="text-lg">
-                ☰
-              </span>
+              <span className="text-lg">☰</span>
             </button>
-
           </div>
         </nav>
       </Container>
     </header>
-  )
+  );
 }
