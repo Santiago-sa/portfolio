@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/Container";
+import { useScroll } from "@/components/layout/ScrollProvider";
 
 const navigationItems = [
   {
@@ -32,23 +33,21 @@ const navigationItems = [
 ];
 
 export function Navbar() {
+  const scrolled = useScroll().scrollPct > 0.01;
+
   return (
     <header
-      className="
-        sticky
-        top-0
-        z-50
-        border-b
-        border-white/[0.04]
-        bg-[#04040e]/70
-        backdrop-blur-xl
-      "
+      className={`sticky top-0 z-50 border-b transition-all duration-[400ms] ${
+        scrolled
+          ? "border-white/[0.04] bg-[#04040e]/90 backdrop-blur-[22px]"
+          : "border-transparent bg-transparent"
+      }`}
     >
       <Container>
         <nav
+          style={{ height: scrolled ? 62 : 76, transition: "height 0.4s ease" }}
           className="
             flex
-            h-[76px]
             items-center
             justify-between
           "
@@ -128,7 +127,7 @@ export function Navbar() {
             {/* Contact */}
 
             <a
-              href="#contacto"
+              href="#contact"
               className="
                 hidden
                 rounded-lg

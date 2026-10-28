@@ -65,7 +65,7 @@ export function ContactItem({ item }: ContactItemProps) {
           ? "rgba(255,255,255,0.15)"
           : "rgba(0,212,255,0.25)";
 
-        element.style.transform = "translateY(-2px)";
+        element.style.transform = "translateX(4px)";
       }}
       onMouseLeave={(event) => {
         const element = event.currentTarget;

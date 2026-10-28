@@ -43,6 +43,18 @@ export function AboutCards() {
               backdropFilter: "blur(4px)",
               height: "100%",
             }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget;
+              el.style.borderColor = `${card.color}30`;
+              el.style.transform = "translateY(-4px)";
+              el.style.background = "rgba(255,255,255,0.04)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget;
+              el.style.borderColor = "rgba(255,255,255,0.06)";
+              el.style.transform = "";
+              el.style.background = "rgba(255,255,255,0.03)";
+            }}
           >
             <div
               style={{

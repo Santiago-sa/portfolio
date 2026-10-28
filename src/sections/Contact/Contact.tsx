@@ -1,4 +1,6 @@
 import { FiSend } from "react-icons/fi";
+import { Reveal } from "@/components/ui/Reveal";
+
 
 import { contactItems } from "../../content/contact";
 import { ContactItem } from "../../components/ui/ContactItem";
@@ -57,7 +59,7 @@ ${message}
             ENCABEZADO
         ========================================================= */}
 
-        <div
+        <Reveal variant="blur"><div
           style={{
             textAlign: "center",
             marginBottom: "34px",
@@ -156,7 +158,7 @@ ${message}
             Estoy abierto a nuevas oportunidades,
             proyectos y colaboraciones.
           </p>
-        </div>
+        </div></Reveal>
 
         {/* =========================================================
             CONTENIDO
@@ -178,7 +180,7 @@ ${message}
               INFORMACIÓN DE CONTACTO
           ======================================================= */}
 
-          <div>
+          <Reveal variant="left" delay={0.1}><div>
             <h3
               style={{
                 fontFamily:
@@ -222,13 +224,13 @@ ${message}
                 item={item}
               />
             ))}
-          </div>
+          </div></Reveal>
 
           {/* =======================================================
               FORMULARIO
           ======================================================= */}
 
-          <form
+          <Reveal variant="right" delay={0.18}><form
             onSubmit={handleSubmit}
             style={{
               background:
@@ -524,10 +526,10 @@ ${message}
                   event.currentTarget;
 
                 element.style.transform =
-                  "translateY(-2px)";
+                  "";
 
                 element.style.boxShadow =
-                  "0 10px 30px rgba(0,212,255,0.18)";
+                  "0 8px 24px rgba(0,212,255,0.28)";
               }}
               onMouseLeave={(event) => {
                 const element =
@@ -542,7 +544,7 @@ ${message}
 
               Enviar mensaje
             </button>
-          </form>
+          </form></Reveal>
         </div>
       </div>
     </section>

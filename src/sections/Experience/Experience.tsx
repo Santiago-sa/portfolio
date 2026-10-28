@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import { experiences } from "../../content/experience";
 
 export function Experience() {
@@ -21,7 +22,7 @@ export function Experience() {
             ENCABEZADO
         ===================================================== */}
 
-        <div
+        <Reveal variant="blur"><div
           style={{
             textAlign: "center",
             marginBottom: "70px",
@@ -111,7 +112,7 @@ export function Experience() {
             Recorrido profesional y aprendizajes en el mundo del desarrollo
             de software.
           </p>
-        </div>
+        </div></Reveal>
 
         {/* =====================================================
             LÍNEA DE TIEMPO
@@ -207,9 +208,15 @@ export function Experience() {
             }}
           >
             {experiences.map((experience, index) => (
-              <article
+              <Reveal
                 key={experience.id}
+                variant={index === 0 ? "left" : "right"}
+                delay={index * 0.1}
+                className="h-full"
+              >
+              <article
                 style={{
+                  height: "100%",
                   background:
                     "rgba(255,255,255,0.025)",
 
@@ -237,18 +244,16 @@ export function Experience() {
                 onMouseEnter={(event) => {
                   const element = event.currentTarget;
 
-                  element.style.transform =
-                    "translateY(-5px)";
-
-                  element.style.boxShadow =
-                    "0 18px 45px rgba(0,0,0,0.28)";
+                  element.style.background = "rgba(255,255,255,0.04)";
+                  element.style.borderColor = index === 0 ? "rgba(79,195,247,0.4)" : "rgba(155,123,234,0.4)";
+                  element.style.borderTopColor = (index === 0 ? "#4fc3f7" : "#9b7bea");
                 }}
                 onMouseLeave={(event) => {
                   const element = event.currentTarget;
 
-                  element.style.transform = "";
-
-                  element.style.boxShadow = "";
+                  element.style.background = "rgba(255,255,255,0.025)";
+                  element.style.borderColor = "rgba(255,255,255,0.08)";
+                  element.style.borderTopColor = (index === 0 ? "#4fc3f7" : "#9b7bea");
                 }}
               >
                 {/* =================================================
@@ -456,6 +461,7 @@ export function Experience() {
                   )}
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>

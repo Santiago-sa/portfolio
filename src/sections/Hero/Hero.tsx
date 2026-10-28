@@ -80,15 +80,12 @@ export function Hero() {
               <span className="block text-[#e8e8f0]">Santiago</span>
 
               <span
-                className="
-                  block
-                  bg-gradient-to-r
-                  from-cyan
-                  via-[#65a8ff]
-                  to-[#a78bfa]
-                  bg-clip-text
-                  text-transparent
-                "
+                className="block bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(135deg,#00d4ff 0%,#a78bfa 50%,#00ffaa 100%)",
+                  backgroundSize: "200% 200%",
+                  animation: "gradShift 6s ease infinite",
+                }}
               >
                 Alvarez Hernández
               </span>
@@ -160,7 +157,7 @@ export function Hero() {
                   transition-all
                   duration-200
                   hover:-translate-y-0.5
-                  hover:shadow-[0_0_30px_rgba(0,212,255,0.2)]
+                  hover:shadow-[0_10px_28px_rgba(0,212,255,0.35)]
                 "
               >
                 Ver proyectos
@@ -291,7 +288,7 @@ export function Hero() {
         type="button"
         onClick={() =>
           document
-            .getElementById("sobre-mi")
+            .getElementById("about")
             ?.scrollIntoView({ behavior: "smooth" })
         }
         className="

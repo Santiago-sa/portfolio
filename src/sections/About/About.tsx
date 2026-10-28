@@ -1,9 +1,11 @@
+import { Reveal } from "@/components/ui/Reveal";
 import { AboutCards } from './AboutCards'
 import { AboutIntro } from './AboutIntro'
 import { AboutStats } from './AboutStats'
 
 function SectionTitle() {
   return (
+    <Reveal variant="blur">
     <div
       style={{
         textAlign: 'center',
@@ -55,6 +57,7 @@ function SectionTitle() {
         Conoce un poco sobre mí
       </h2>
     </div>
+    </Reveal>
   )
 }
 
