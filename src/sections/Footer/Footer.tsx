@@ -68,7 +68,8 @@ export function Footer() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Santiago.
+              Santiago
+              <span className="text-cyan">.</span>
             </a>
 
             <p
