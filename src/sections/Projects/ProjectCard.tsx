@@ -13,9 +13,9 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="project-card" style={{ borderTop: `2px solid ${accent.solid}` }}>
-      <ProjectPreview title={project.title} image={project.image} />
+      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} />
 
-      <div style={{ padding: "24px 26px 26px" }}>
+      <div style={{ padding: "16px 18px 18px" }}>
         <span
           style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -31,21 +31,21 @@ export function ProjectCard({ project }: { project: Project }) {
         <h3
           style={{
             fontFamily: "'Outfit', sans-serif",
-            fontSize: "22px",
+            fontSize: "18px",
             fontWeight: 700,
             color: "#e8e8f0",
-            margin: "8px 0 10px",
+            margin: "6px 0 8px",
             letterSpacing: "-0.01em",
           }}
         >
           {project.title}
         </h3>
 
-        <p style={{ margin: "0 0 18px", color: "#9090b2", fontSize: "13.5px", lineHeight: 1.8 }}>
+        <p style={{ margin: "0 0 12px", color: "#9090b2", fontSize: "12.5px", lineHeight: 1.7 }}>
           {project.description}
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "20px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "14px" }}>
           {project.technologies.map((tech) => (
             <span
               key={tech}
