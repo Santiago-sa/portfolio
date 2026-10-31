@@ -62,10 +62,16 @@ interface ProjectPreviewProps {
   title: string;
   image?: string;
   imageMobile?: string;
+  previewUrl?: string;
 }
 
+
+/** "/projects/x.webp" + [420,840] → "/projects/x-420.webp 420w, /projects/x-840.webp 840w" */
+const srcSetFor = (path: string, widths: number[]) =>
+  widths.map((w) => `${path.replace(/\.webp$/, "")}-${w}.webp ${w}w`).join(", ");
+
 /** Pantalla de PC (recortada, se desplaza al pasar el mouse) + celular encima. */
-export function ProjectPreview({ title, image, imageMobile }: ProjectPreviewProps) {
+export function ProjectPreview({ title, image, imageMobile, previewUrl }: ProjectPreviewProps) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(image) && !failed;
 
@@ -75,13 +81,16 @@ export function ProjectPreview({ title, image, imageMobile }: ProjectPreviewProp
         <span style={{ background: "#ff5f57" }} />
         <span style={{ background: "#febc2e" }} />
         <span style={{ background: "#28c840" }} />
-        <div className="project-preview-url">{title.toLowerCase()}</div>
+        <div className="project-preview-url">{previewUrl ?? `${title.toLowerCase()}.app`}</div>
       </div>
 
       <div className="project-preview-screen">
         {showImage ? (
           <img
             src={image}
+            srcSet={srcSetFor(image!, [420, 840, 1260])}
+            sizes="(max-width: 600px) 92vw, 420px"
+            decoding="async"
             alt={`Vista de escritorio de ${title}`}
             loading="lazy"
             onError={() => setFailed(true)}
@@ -117,6 +126,9 @@ export function ProjectPreview({ title, image, imageMobile }: ProjectPreviewProp
         >
           <img
             src={imageMobile ?? image}
+            srcSet={imageMobile ? srcSetFor(imageMobile, [96, 192, 288]) : undefined}
+            sizes="94px"
+            decoding="async"
             alt={`Vista móvil de ${title}`}
             loading="lazy"
             className="project-phone-img"

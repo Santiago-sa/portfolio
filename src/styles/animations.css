@@ -309,15 +309,11 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 420px));
   gap: 24px;
   justify-content: center;
 }
 
-/* Con un solo proyecto la tarjeta no se estira a todo el ancho */
-.projects-grid:has(> :only-child) {
-  grid-template-columns: minmax(0, 420px);
-}
 
 .project-card {
   background: rgba(255, 255, 255, 0.025);
@@ -479,8 +475,7 @@
 }
 
 @media (max-width: 600px) {
-  .projects-grid,
-  .projects-grid:has(> :only-child) {
+  .projects-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }

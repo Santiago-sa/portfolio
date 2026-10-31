@@ -5,6 +5,7 @@ import { ProjectPreview } from "./ProjectPreview";
 
 const ACCENTS = {
   cyan: { solid: "#4fc3f7", soft: "rgba(79,195,247,0.05)", line: "rgba(79,195,247,0.2)" },
+  mint: { solid: "#00ffaa", soft: "rgba(0,255,170,0.05)", line: "rgba(0,255,170,0.2)" },
   violet: { solid: "#9b7bea", soft: "rgba(155,123,234,0.05)", line: "rgba(155,123,234,0.2)" },
 } as const;
 
@@ -13,7 +14,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="project-card" style={{ borderTop: `2px solid ${accent.solid}` }}>
-      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} />
+      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} previewUrl={project.previewUrl} />
 
       <div style={{ padding: "16px 18px 18px" }}>
         <span
@@ -64,7 +65,7 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        {(project.repoUrl || project.liveUrl) && (
+        {/* {(project.repoUrl || project.liveUrl) && (
           <div style={{ display: "flex", gap: "16px" }}>
             {project.repoUrl && (
               <a href={project.repoUrl} target="_blank" rel="noreferrer" className="project-link">
@@ -77,7 +78,7 @@ export function ProjectCard({ project }: { project: Project }) {
               </a>
             )}
           </div>
-        )}
+        )} */}
       </div>
     </article>
   );
