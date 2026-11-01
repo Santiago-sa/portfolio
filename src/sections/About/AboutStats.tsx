@@ -1,8 +1,9 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Reveal } from '@/components/ui/Reveal'
 
 const stats = [
   {
-    num: '+20',
+    num: '6+',
     label: 'Proyectos',
   },
   {
@@ -20,6 +21,7 @@ const stats = [
 ]
 
 export function AboutStats() {
+  const { t } = useLang();
   return (
     <Reveal
       variant="up"
@@ -36,7 +38,7 @@ export function AboutStats() {
       >
         {stats.map((stat, index) => (
           <div
-            key={stat.label}
+            key={t.about.stats[index]}
             style={{
               background: 'rgba(255,255,255,0.03)',
               backdropFilter: 'blur(4px)',
@@ -66,7 +68,7 @@ export function AboutStats() {
                 color: '#7070a0',
               }}
             >
-              {stat.label}
+              {t.about.stats[index]}
             </div>
           </div>
         ))}

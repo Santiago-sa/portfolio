@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import type { ReactNode } from 'react'
 
 interface CodeLineProps {
@@ -32,6 +33,7 @@ function CodeLine({
 }
 
 export function CodeTerminal() {
+  const { t } = useLang();
   return (
     <div
       className="
@@ -174,7 +176,7 @@ export function CodeTerminal() {
               <span className="text-[#63d7a4]">passion</span>
               <span className="text-[#e8e8f0]">: </span>
               <span className="text-[#f0a35b]">
-                "Resolver problemas"
+                "{t.hero.passion}"
               </span>
             </>
           }

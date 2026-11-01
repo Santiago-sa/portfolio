@@ -1,4 +1,6 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Container } from "@/components/layout/Container";
+import { useScroll } from "@/components/layout/ScrollProvider";
 
 const navigationItems = [
   {
@@ -32,23 +34,22 @@ const navigationItems = [
 ];
 
 export function Navbar() {
+  const { tr, lang, setLang } = useLang();
+  const scrolled = useScroll().scrollPct > 0.01;
+
   return (
     <header
-      className="
-        sticky
-        top-0
-        z-50
-        border-b
-        border-white/[0.04]
-        bg-[#04040e]/70
-        backdrop-blur-xl
-      "
+      className={`sticky top-0 z-50 border-b transition-all duration-[400ms] ${
+        scrolled
+          ? "border-white/[0.04] bg-[#04040e]/90 backdrop-blur-[22px]"
+          : "border-transparent bg-transparent"
+      }`}
     >
       <Container>
         <nav
+          style={{ height: scrolled ? 62 : 76, transition: "height 0.4s ease" }}
           className="
             flex
-            h-[76px]
             items-center
             justify-between
           "
@@ -88,7 +89,7 @@ export function Navbar() {
                     hover:text-[#e8e8f0]
                   "
                 >
-                  {item.label}
+                  {tr(item.label)}
                 </a>
               </li>
             ))}
@@ -102,11 +103,9 @@ export function Navbar() {
             <div className="hidden items-center gap-2 font-mono text-[10px] sm:flex">
               <button
                 type="button"
-                className="
-                  text-cyan
-                  transition-colors
-                  hover:text-white
-                "
+                onClick={() => setLang("es")}
+                aria-pressed={lang === "es"}
+                className={`transition-colors hover:text-white ${lang === "es" ? "text-cyan" : "text-[#4848a0]"}`}
               >
                 ES
               </button>
@@ -115,11 +114,9 @@ export function Navbar() {
 
               <button
                 type="button"
-                className="
-                  text-[#4848a0]
-                  transition-colors
-                  hover:text-white
-                "
+                onClick={() => setLang("en")}
+                aria-pressed={lang === "en"}
+                className={`transition-colors hover:text-white ${lang === "en" ? "text-cyan" : "text-[#4848a0]"}`}
               >
                 EN
               </button>
@@ -128,7 +125,7 @@ export function Navbar() {
             {/* Contact */}
 
             <a
-              href="#contacto"
+              href="#contact"
               className="
                 hidden
                 rounded-lg
@@ -150,14 +147,14 @@ export function Navbar() {
                 sm:inline-flex
               "
             >
-              Hablemos
+              {tr("Hablemos")}
             </a>
 
             {/* Mobile button */}
 
             <button
               type="button"
-              aria-label="Abrir menú"
+              aria-label={tr("Abrir menú")}
               className="
                 flex
                 h-9

@@ -1,4 +1,6 @@
+import { useLang } from "@/i18n/LangProvider";
 import { useState } from "react";
+import { Reveal } from "../../components/ui/Reveal";
 
 import { skills } from "../../content/skills";
 import type { SkillCategory } from "../../types/skills";
@@ -21,8 +23,10 @@ const categoryLabels: Record<SkillCategory, string> = {
 };
 
 export function Skills() {
+  const { t, tr } = useLang();
   const [activeCategory, setActiveCategory] =
     useState<SkillCategory>("Frontend");
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const filteredSkills = skills.filter(
     (skill) => skill.category === activeCategory,
@@ -51,7 +55,7 @@ export function Skills() {
             ENCABEZADO
         ========================================================= */}
 
-        <div
+        <Reveal variant="blur"><div
           style={{
             textAlign: "center",
             marginBottom: "60px",
@@ -92,7 +96,7 @@ export function Skills() {
               }}
             />
 
-           // tecnologías
+           {t.skills.label}
           </span>
 
           {/* Título */}
@@ -108,7 +112,7 @@ export function Skills() {
               letterSpacing: "-0.02em",
             }}
           >
-            Tecnologías y herramientas
+            {t.skills.title}
           </h2>
 
           {/* Descripción */}
@@ -122,10 +126,9 @@ export function Skills() {
               lineHeight: 1.8,
             }}
           >
-            Stack que uso para construir soluciones robustas, escalables y
-            modernas.
+            {t.skills.subtitle}
           </p>
-        </div>
+        </div></Reveal>
 
         {/* =========================================================
             CATEGORÍAS
@@ -178,7 +181,7 @@ export function Skills() {
                   backdropFilter: "blur(4px)",
                 }}
               >
-                {categoryLabels[category]}
+                {tr(categoryLabels[category])}
               </button>
             );
           })}
@@ -221,9 +224,9 @@ export function Skills() {
             alignContent: "start",
           }}
         >
-          {filteredSkills.map((skill) => (
+          {filteredSkills.map((skill, i) => (
+            <Reveal key={skill.name} variant="scale" delay={i * 0.04}>
             <div
-              key={skill.name}
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.06)",
@@ -231,7 +234,8 @@ export function Skills() {
                 padding: "22px 12px",
                 textAlign: "center",
                 cursor: "default",
-                transition: "all 0.28s",
+                transition: "all 0.28s cubic-bezier(0.34,1.56,0.64,1)",
+                opacity: hovered && hovered !== skill.name ? 0.35 : 1,
                 backdropFilter: "blur(4px)",
 
                 /*
@@ -242,18 +246,20 @@ export function Skills() {
                 boxSizing: "border-box",
               }}
               onMouseEnter={(event) => {
+                setHovered(skill.name);
                 const element = event.currentTarget;
 
                 element.style.borderColor =
                   "rgba(0,212,255,0.20)";
 
                 element.style.transform =
-                  "translateY(-5px)";
+                  "translateY(-6px) scale(1.08)";
 
                 element.style.boxShadow =
                   "0 16px 40px rgba(0,0,0,0.35)";
               }}
               onMouseLeave={(event) => {
+                setHovered(null);
                 const element = event.currentTarget;
 
                 element.style.borderColor =
@@ -301,6 +307,7 @@ export function Skills() {
                 {skill.name}
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

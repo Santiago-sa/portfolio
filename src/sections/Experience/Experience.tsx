@@ -1,6 +1,15 @@
-import { experiences } from "../../content/experience";
+import { useLang } from "@/i18n/LangProvider";
+import { FiBriefcase, FiCheck } from "react-icons/fi";
+
+import { Reveal } from "@/components/ui/Reveal";
+import { experiences as experiencesEs } from "../../content/experience";
+import { experiencesEn, localize } from "@/i18n/content-en";
+
+const ACC = ["#4fc3f7", "#9b7bea", "#00ffaa"];
 
 export function Experience() {
+  const { t, lang } = useLang();
+  const experiences = localize(experiencesEs, experiencesEn, lang);
   return (
     <section
       id="experience"
@@ -21,7 +30,7 @@ export function Experience() {
             ENCABEZADO
         ===================================================== */}
 
-        <div
+        <Reveal variant="blur"><div
           style={{
             textAlign: "center",
             marginBottom: "70px",
@@ -68,7 +77,7 @@ export function Experience() {
               }}
             />
 
-            // experiencia
+            {t.experience.label}
           </span>
 
           {/* Título */}
@@ -90,7 +99,7 @@ export function Experience() {
               letterSpacing: "-0.02em",
             }}
           >
-            Mi experiencia
+            {t.experience.title}
           </h2>
 
           {/* Descripción */}
@@ -108,10 +117,9 @@ export function Experience() {
               lineHeight: 1.8,
             }}
           >
-            Recorrido profesional y aprendizajes en el mundo del desarrollo
-            de software.
+            {t.experience.subtitle}
           </p>
-        </div>
+        </div></Reveal>
 
         {/* =====================================================
             LÍNEA DE TIEMPO
@@ -122,110 +130,41 @@ export function Experience() {
             position: "relative",
           }}
         >
-          {/* Línea horizontal */}
-
-          <div
-            style={{
-              position: "absolute",
-
-              top: "0",
-
-              left: "23.5%",
-              right: "23.5%",
-
-              height: "1px",
-
-              background:
-                "rgba(120,120,170,0.18)",
-            }}
-          />
-
-          {/* Puntos */}
-
-          <div
-            style={{
-              position: "absolute",
-
-              top: "-9px",
-
-              left: "23.5%",
-
-              width: "18px",
-              height: "18px",
-
-              borderRadius: "50%",
-
-              background: "#5cc8f2",
-
-              border: "3px solid #05050d",
-
-              boxShadow:
-                "0 0 12px rgba(92,200,242,0.7)",
-
-              transform: "translateX(-50%)",
-            }}
-          />
-
-          <div
-            style={{
-              position: "absolute",
-
-              top: "-9px",
-
-              left: "76.5%",
-
-              width: "18px",
-              height: "18px",
-
-              borderRadius: "50%",
-
-              background: "#9b7bea",
-
-              border: "3px solid #05050d",
-
-              boxShadow:
-                "0 0 12px rgba(155,123,234,0.7)",
-
-              transform: "translateX(-50%)",
-            }}
-          />
+          <div className="exp-line" />
 
           {/* =================================================
               TARJETAS
           ================================================= */}
 
-          <div
-            style={{
-              display: "grid",
-
-              gridTemplateColumns:
-                "repeat(2, minmax(0, 1fr))",
-
-              gap: "20px",
-
-              paddingTop: "42px",
-            }}
-          >
+          <div className="exp-grid">
             {experiences.map((experience, index) => (
-              <article
+              <Reveal
                 key={experience.id}
+                variant={(["left", "up", "right"] as const)[index % 3]}
+                delay={index * 0.1}
+                className="relative h-full"
+              >
+              <span
+                className="exp-dot"
+                style={{ background: ACC[index], boxShadow: `0 0 12px ${ACC[index]}b3` }}
+              />
+              <article
                 style={{
+                  height: "100%",
                   background:
                     "rgba(255,255,255,0.025)",
 
                   border:
                     "1px solid rgba(255,255,255,0.08)",
 
-                  borderTop:
-                    index === 0
-                      ? "2px solid #4fc3f7"
-                      : "2px solid #9b7bea",
+                  borderTop: `2px solid ${ACC[index]}`,
 
                   borderRadius: "14px",
 
                   padding: "26px",
 
-                  minHeight: index === 0 ? "382px" : "332px",
+                  display: "flex",
+                  flexDirection: "column",
 
                   position: "relative",
 
@@ -237,18 +176,16 @@ export function Experience() {
                 onMouseEnter={(event) => {
                   const element = event.currentTarget;
 
-                  element.style.transform =
-                    "translateY(-5px)";
-
-                  element.style.boxShadow =
-                    "0 18px 45px rgba(0,0,0,0.28)";
+                  element.style.background = "rgba(255,255,255,0.04)";
+                  element.style.borderColor = `${ACC[index]}66`;
+                  element.style.borderTopColor = ACC[index];
                 }}
                 onMouseLeave={(event) => {
                   const element = event.currentTarget;
 
-                  element.style.transform = "";
-
-                  element.style.boxShadow = "";
+                  element.style.background = "rgba(255,255,255,0.025)";
+                  element.style.borderColor = "rgba(255,255,255,0.08)";
+                  element.style.borderTopColor = ACC[index];
                 }}
               >
                 {/* =================================================
@@ -299,20 +236,11 @@ export function Experience() {
 
                       fontSize: "10px",
 
-                      color:
-                        index === 0
-                          ? "#55c8f5"
-                          : "#a88be8",
+                      color: ACC[index],
 
-                      background:
-                        index === 0
-                          ? "rgba(85,200,245,0.05)"
-                          : "rgba(168,139,232,0.05)",
+                      background: `${ACC[index]}0d`,
 
-                      border:
-                        index === 0
-                          ? "1px solid rgba(85,200,245,0.2)"
-                          : "1px solid rgba(168,139,232,0.2)",
+                      border: `1px solid ${ACC[index]}33`,
 
                       padding:
                         "5px 10px",
@@ -324,42 +252,41 @@ export function Experience() {
                   </span>
                 </div>
 
-                {/* =================================================
-                    EMPRESA
-                ================================================= */}
+                {/* Empresa + tipo */}
 
                 <div
                   style={{
-                    color:
-                      index === 0
-                        ? "#45b8e8"
-                        : "#a486e5",
-
-                    fontSize: "13px",
-
-                    fontWeight: 600,
-
-                    marginBottom: "3px",
-                  }}
-                >
-                  {experience.company}
-                </div>
-
-                {/* Tipo */}
-
-                <div
-                  style={{
-                    fontFamily:
-                      "'JetBrains Mono', monospace",
-
-                    fontSize: "10px",
-
-                    color: "#6d6d95",
-
+                    display: "flex",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    gap: "8px 12px",
                     marginBottom: "18px",
                   }}
                 >
-                  {experience.type}
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      color: ACC[index],
+                      fontSize: "13px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <FiBriefcase size={14} /> {experience.company}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: "10px",
+                      color: "#8080a8",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: "10px",
+                      padding: "2px 8px",
+                    }}
+                  >
+                    {experience.type}
+                  </span>
                 </div>
 
                 {/* =================================================
@@ -380,82 +307,78 @@ export function Experience() {
                   {experience.description}
                 </p>
 
-                {/* =================================================
-                    LOGROS / ACTIVIDADES
-                ================================================= */}
+                {/* Logros: marcador propio, aparecen escalonados */}
 
-                <ul
-                  style={{
-                    margin: "0 0 15px",
-
-                    paddingLeft: "16px",
-
-                    color: "#8585a8",
-
-                    fontSize: "13px",
-
-                    lineHeight: 1.9,
-                  }}
+                <div
+                  role="list"
+                  style={{ display: "flex", flexDirection: "column", gap: "10px", margin: "4px 0 22px" }}
                 >
-                  {experience.achievements.map(
-                    (achievement) => (
-                      <li key={achievement}>
+                  {experience.achievements.map((achievement, j) => (
+                    <Reveal key={achievement} variant="up" delay={0.2 + j * 0.07}>
+                      <div
+                        role="listitem"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "10px",
+                          color: "#8f8fb2",
+                          fontSize: "13px",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: "18px",
+                            height: "18px",
+                            flexShrink: 0,
+                            marginTop: "2px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: "5px",
+                            background: `${ACC[index]}14`,
+                            border: `1px solid ${ACC[index]}33`,
+                          }}
+                        >
+                          <FiCheck size={11} color={ACC[index]} />
+                        </span>
                         {achievement}
-                      </li>
-                    ),
-                  )}
-                </ul>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
 
-                {/* =================================================
-                    TECNOLOGÍAS
-                ================================================= */}
+                {/* Tecnologías: siempre al fondo de la tarjeta */}
 
                 <div
                   style={{
+                    marginTop: "auto",
+                    paddingTop: "16px",
+                    borderTop: "1px solid rgba(255,255,255,0.06)",
                     display: "flex",
-
                     flexWrap: "wrap",
-
                     gap: "6px",
                   }}
                 >
-                  {experience.technologies.map(
-                    (technology) => (
-                      <span
-                        key={technology}
-                        style={{
-                          fontFamily:
-                            "'JetBrains Mono', monospace",
-
-                          fontSize: "10px",
-
-                          color:
-                            index === 0
-                              ? "#57c8ef"
-                              : "#a98be9",
-
-                          background:
-                            index === 0
-                              ? "rgba(87,200,239,0.04)"
-                              : "rgba(169,139,233,0.04)",
-
-                          border:
-                            index === 0
-                              ? "1px solid rgba(87,200,239,0.18)"
-                              : "1px solid rgba(169,139,233,0.18)",
-
-                          padding:
-                            "4px 8px",
-
-                          borderRadius: "3px",
-                        }}
-                      >
-                        {technology}
-                      </span>
-                    ),
-                  )}
+                  {experience.technologies.map((technology) => (
+                    <span
+                      key={technology}
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: "10px",
+                        color: ACC[index],
+                        background: `${ACC[index]}0a`,
+                        border: `1px solid ${ACC[index]}2e`,
+                        padding: "4px 8px",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      {technology}
+                    </span>
+                  ))}
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>

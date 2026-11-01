@@ -1,7 +1,9 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Container } from "@/components/layout/Container";
 import { HeroVisual } from "./components/HeroVisual";
 
 export function Hero() {
+  const { t } = useLang();
   return (
     <section
       id="inicio"
@@ -49,7 +51,7 @@ export function Hero() {
                   bg-mint
                 "
               />
-              Disponible para nuevas oportunidades
+              {t.hero.available}
             </div>
 
             {/* Small introduction */}
@@ -63,7 +65,7 @@ export function Hero() {
                 text-[#8585a5]
               "
             >
-              Hola, soy
+              {t.hero.greeting}
             </p>
 
             {/* Name */}
@@ -80,15 +82,12 @@ export function Hero() {
               <span className="block text-[#e8e8f0]">Santiago</span>
 
               <span
-                className="
-                  block
-                  bg-gradient-to-r
-                  from-cyan
-                  via-[#65a8ff]
-                  to-[#a78bfa]
-                  bg-clip-text
-                  text-transparent
-                "
+                className="block bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(135deg,#00d4ff 0%,#a78bfa 50%,#00ffaa 100%)",
+                  backgroundSize: "200% 200%",
+                  animation: "gradShift 6s ease infinite",
+                }}
               >
                 Alvarez Hernández
               </span>
@@ -103,7 +102,7 @@ export function Hero() {
                 text-[clamp(11px,1.4vw,14px)]
               "
             >
-              <span className="text-cyan">{"<Ingeniero Informático"}</span>
+              <span className="text-cyan">{"<" + t.hero.role}</span>
 
               <span className="text-[#6b6b8c]">{" / "}</span>
 
@@ -124,8 +123,7 @@ export function Hero() {
                 text-[#8585a5]
               "
             >
-              Construyo aplicaciones web y móviles modernas, escalables y
-              centradas en resolver problemas reales.
+              {t.hero.tagline}
             </p>
 
             {/* Actions */}
@@ -160,10 +158,10 @@ export function Hero() {
                   transition-all
                   duration-200
                   hover:-translate-y-0.5
-                  hover:shadow-[0_0_30px_rgba(0,212,255,0.2)]
+                  hover:shadow-[0_10px_28px_rgba(0,212,255,0.35)]
                 "
               >
-                Ver proyectos
+                {t.hero.btnProjects}
                 <span className="text-lg">→</span>
               </a>
 
@@ -189,14 +187,14 @@ export function Hero() {
                   hover:text-cyan
                 "
               >
-                Contactarme
+                {t.hero.btnContact}
               </a>
 
               {/* CV */}
 
               <a
-                href="/cv.pdf"
-                download
+                href={`${import.meta.env.BASE_URL}cv/CV_SantiagoAlvarez.pdf`}
+                download="CV_SantiagoAlvarez.pdf"
                 className="
                   inline-flex
                   items-center
@@ -217,7 +215,7 @@ export function Hero() {
                 "
               >
                 <span>↓</span>
-                Descargar CV
+                {t.hero.btnCV}
               </a>
             </div>
 
@@ -244,11 +242,11 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    20+
+                    6+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Proyectos
+                    {t.hero.statProjects}
                   </div>
                 </div>
 
@@ -256,11 +254,11 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    15+
+                    10+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Tecnologías
+                    {t.hero.statTech}
                   </div>
                 </div>
 
@@ -272,7 +270,7 @@ export function Hero() {
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Años exp.
+                    {t.hero.statYears}
                   </div>
                 </div>
               </div>
@@ -291,7 +289,7 @@ export function Hero() {
         type="button"
         onClick={() =>
           document
-            .getElementById("sobre-mi")
+            .getElementById("about")
             ?.scrollIntoView({ behavior: "smooth" })
         }
         className="
@@ -316,7 +314,7 @@ export function Hero() {
           hover:text-[#7070a0]
         "
       >
-        Desplázate para explorar
+        {t.hero.scroll}
         <span className="text-[16px] leading-none">⌄</span>
       </button>
     </section>

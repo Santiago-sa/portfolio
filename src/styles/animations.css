@@ -283,3 +283,318 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* =========================================================
+   PROYECTOS
+========================================================= */
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes skeletonPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 420px));
+  gap: 24px;
+  justify-content: center;
+}
+
+
+.project-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.project-preview {
+  background: #0a0a14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-preview-bar > span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.project-preview-url {
+  margin-left: 10px;
+  flex: 1;
+  max-width: 220px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  color: #6d6d95;
+}
+
+.project-preview-screen {
+  position: relative;
+  aspect-ratio: 16 / 8.5;
+  overflow: hidden;
+}
+
+.project-preview-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(0, 212, 255, 0.12) 50%,
+    transparent 60%
+  );
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.project-card:hover .project-preview-screen::after {
+  animation: scanLine 1.4s ease-in-out;
+}
+
+.project-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: object-position 4.5s ease-in-out;
+}
+
+.project-card:hover .project-preview-img {
+  object-position: 50% 38%;
+}
+
+.project-preview-skeleton {
+  display: flex;
+  height: 100%;
+  animation: skeletonPulse 2.4s ease-in-out infinite;
+}
+
+.skeleton-sidebar {
+  width: 16%;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skeleton-sidebar span,
+.skeleton-title,
+.skeleton-cards span,
+.skeleton-table {
+  display: block;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.skeleton-sidebar span {
+  height: 8px;
+}
+
+.skeleton-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skeleton-title {
+  width: 35%;
+  height: 12px;
+  background: rgba(0, 212, 255, 0.18);
+}
+
+.skeleton-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.skeleton-cards span {
+  height: 44px;
+}
+
+.skeleton-table {
+  flex: 1;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #8888b0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #00d4ff;
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.project-phone-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  display: block;
+  transition: object-position 5s ease-in-out;
+}
+
+.project-card:hover .project-phone-img {
+  object-position: 50% 28%;
+}
+
+/* App móvil: celulares lado a lado que suben al pasar el mouse */
+.project-mobile-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 18px;
+  height: 283px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 95%, rgba(0, 255, 170, 0.2), transparent 70%),
+    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 18px 18px,
+    linear-gradient(160deg, #0b1f18, #07070f 70%);
+}
+
+.project-mobile-phone {
+  width: min(190px, 45%);
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 5px solid #1c1c2e;
+  border-radius: 28px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 4.5s ease-in-out;
+}
+
+.project-mobile-phone:nth-child(2) {
+  margin-top: 22px;
+}
+
+.project-card:hover .project-mobile-phone {
+  transform: translateY(-150px);
+}
+
+.project-mobile-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  background: linear-gradient(to bottom, transparent, #07070f);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-chip {
+  position: absolute;
+  z-index: 3;
+  padding: 5px 11px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 255, 170, 0.28);
+  background: rgba(4, 4, 14, 0.9);
+  color: #00ffaa;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.project-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 18px;
+}
+
+@keyframes dotFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+
+/* Experiencia: línea de tiempo de 3 columnas */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 42px;
+}
+
+.exp-line {
+  position: absolute;
+  top: 0;
+  left: 16.66%;
+  right: 16.66%;
+  height: 1px;
+  background: rgba(120, 120, 170, 0.18);
+}
+
+.exp-dot {
+  position: absolute;
+  top: -51px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid #05050d;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1000px) {
+  .exp-grid { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
+  .exp-line, .exp-dot { display: none; }
+}

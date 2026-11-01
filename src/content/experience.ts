@@ -2,6 +2,27 @@ import type { Experience } from "../types/experience";
 
 export const experiences: Experience[] = [
   {
+    id: "urasoft",
+    period: "Ene 2026 - Sep 2026",
+    position: "Desarrollador de Software",
+    company: "UraSoft",
+    type: "Chigorodó",
+
+    description:
+      "Desarrollo de proyecto de software para una entidad pública municipal, con foco en la construcción del frontend de una aplicación móvil.",
+
+    achievements: [
+      "Desarrollo de aplicación móvil en Flutter, enfocada en la construcción del frontend",
+      "Implementación de layouts responsivos, widgets reutilizables y navegación entre pantallas",
+      "Estructuración del proyecto para facilitar la futura integración con servicios backend",
+      "Buenas prácticas de desarrollo y organización modular del código",
+      "Apoyo en el levantamiento de requerimientos iniciales del sistema",
+    ],
+
+    technologies: ["Flutter", "Dart"],
+  },
+
+  {
   id: "cargo-ban",
   period: "2025",
   position: "Desarrollador Full Stack",
@@ -33,7 +54,7 @@ export const experiences: Experience[] = [
 
   {
     id: "projects",
-    period: "2022 - 2024",
+    period: "2022 - Presente",
     position: "Desarrollador de Software",
     company: "Proyectos Académicos y Personales",
     type: "Freelance / Personal",

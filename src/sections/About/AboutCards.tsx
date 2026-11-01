@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Reveal } from "@/components/ui/Reveal";
 import { AboutIcon, type AboutIconName } from "./AboutIcon";
 
@@ -29,10 +30,11 @@ const cards = [
 ];
 
 export function AboutCards() {
+  const { t } = useLang();
   return (
     <div className="about-cards-grid">
       {cards.map((card, index) => (
-        <Reveal key={card.title} variant="scale" delay={0.05 * index}>
+        <Reveal key={t.about.cards[index].title} variant="scale" delay={0.05 * index}>
           <div
             style={{
               background: "rgba(255,255,255,0.03)",
@@ -42,6 +44,18 @@ export function AboutCards() {
               transition: "all 0.3s",
               backdropFilter: "blur(4px)",
               height: "100%",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget;
+              el.style.borderColor = `${card.color}30`;
+              el.style.transform = "translateY(-4px)";
+              el.style.background = "rgba(255,255,255,0.04)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget;
+              el.style.borderColor = "rgba(255,255,255,0.06)";
+              el.style.transform = "";
+              el.style.background = "rgba(255,255,255,0.03)";
             }}
           >
             <div
@@ -70,7 +84,7 @@ export function AboutCards() {
                 marginBottom: "5px",
               }}
             >
-              {card.title}
+              {t.about.cards[index].title}
             </div>
 
             <div
@@ -80,7 +94,7 @@ export function AboutCards() {
                 lineHeight: 1.6,
               }}
             >
-              {card.sub}
+              {t.about.cards[index].sub}
             </div>
           </div>
         </Reveal>
