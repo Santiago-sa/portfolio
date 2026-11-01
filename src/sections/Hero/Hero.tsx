@@ -241,7 +241,7 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    20+
+                    5+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">

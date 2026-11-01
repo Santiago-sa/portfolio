@@ -1,6 +1,5 @@
 import { Reveal } from "../../components/ui/Reveal";
-import { projects } from "../../content/projects";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectsCarousel } from "./ProjectsCarousel";
 
 export function Projects() {
   return (
@@ -69,13 +68,9 @@ export function Projects() {
           </div>
         </Reveal>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <Reveal key={project.id} variant="scale" delay={index * 0.09}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal variant="up" delay={0.1}>
+          <ProjectsCarousel />
+        </Reveal>
       </div>
     </section>
   );

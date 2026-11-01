@@ -14,9 +14,9 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="project-card" style={{ borderTop: `2px solid ${accent.solid}` }}>
-      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} previewUrl={project.previewUrl} />
+      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} previewUrl={project.previewUrl} layout={project.layout} images={project.images} />
 
-      <div style={{ padding: "16px 18px 18px" }}>
+      <div className="project-card-body">
         <span
           style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -64,8 +64,8 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-
-        {/* {(project.repoUrl || project.liveUrl) && (
+{/* 
+        {(project.repoUrl || project.liveUrl) && (
           <div style={{ display: "flex", gap: "16px" }}>
             {project.repoUrl && (
               <a href={project.repoUrl} target="_blank" rel="noreferrer" className="project-link">

@@ -63,6 +63,8 @@ interface ProjectPreviewProps {
   image?: string;
   imageMobile?: string;
   previewUrl?: string;
+  layout?: "desktop" | "mobile";
+  images?: string[];
 }
 
 
@@ -70,8 +72,33 @@ interface ProjectPreviewProps {
 const srcSetFor = (path: string, widths: number[]) =>
   widths.map((w) => `${path.replace(/\.webp$/, "")}-${w}.webp ${w}w`).join(", ");
 
+/** App móvil: un celular grande (180 px = 2x nativo de la captura, nítido en pantallas retina). */
+function MobileAppPreview({ title, images }: { title: string; images: string[] }) {
+  return (
+    <div className="project-preview">
+      <div className="project-mobile-stage">
+        <span className="project-chip float-a" style={{ left: 14, top: "14%" }}>Flutter</span>
+        <span className="project-chip float-b" style={{ right: 14, bottom: "24%" }}>Offline</span>
+        {images.map((src, i) => (
+          <div key={src} className="project-mobile-phone">
+            <img
+              src={src}
+              srcSet={`${src.replace(/\.webp$/, "-1x.webp")} 1x, ${src} 2x`}
+              alt={`Pantalla ${i + 1} de la app ${title}`}
+              decoding="async"
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** Pantalla de PC (recortada, se desplaza al pasar el mouse) + celular encima. */
-export function ProjectPreview({ title, image, imageMobile, previewUrl }: ProjectPreviewProps) {
+export function ProjectPreview({ title, image, imageMobile, previewUrl, layout, images }: ProjectPreviewProps) {
+  if (layout === "mobile" && image) return <MobileAppPreview title={title} images={images ?? [image]} />;
+
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(image) && !failed;
 
