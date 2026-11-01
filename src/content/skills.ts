@@ -52,14 +52,14 @@ export const skills: Skill[] = [
     name: "Express.js",
     category: "Backend",
   },
-  // {
-  //   name: "Laravel",
-  //   category: "Backend",
-  // },
-  // {
-  //   name: "PHP",
-  //   category: "Backend",
-  // },
+  {
+    name: "Laravel",
+    category: "Backend",
+  },
+  {
+    name: "PHP",
+    category: "Backend",
+  },
 
   // Mobile
   {

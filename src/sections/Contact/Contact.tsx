@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { FiSend } from "react-icons/fi";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -6,6 +7,7 @@ import { contactItems } from "../../content/contact";
 import { ContactItem } from "../../components/ui/ContactItem";
 
 export function Contact() {
+  const { t } = useLang();
   const handleSubmit = (
     event: React.FormEvent<HTMLFormElement>,
   ) => {
@@ -28,7 +30,7 @@ export function Contact() {
       String(formData.get("message") ?? "");
 
     const body = `
-Nombre: ${name}
+${t.contact.name}: ${name}
 Email: ${email}
 
 ${message}
@@ -113,7 +115,7 @@ ${message}
               }}
             />
 
-            // contacto
+            {t.contact.label}
           </span>
 
           {/* TÍTULO */}
@@ -137,7 +139,7 @@ ${message}
               letterSpacing: "-0.02em",
             }}
           >
-            ¿Tienes un proyecto en mente?
+            {t.contact.title}
           </h2>
 
           {/* DESCRIPCIÓN */}
@@ -155,8 +157,7 @@ ${message}
               lineHeight: 1.8,
             }}
           >
-            Estoy abierto a nuevas oportunidades,
-            proyectos y colaboraciones.
+            {t.contact.subtitle}
           </p>
         </div></Reveal>
 
@@ -195,7 +196,7 @@ ${message}
                 margin: "0 0 14px",
               }}
             >
-              Hablemos
+              {t.contact.heading}
             </h3>
 
             <p
@@ -211,9 +212,7 @@ ${message}
                 margin: "0 0 28px",
               }}
             >
-              Estoy disponible para proyectos
-              freelance, posiciones Full Stack y
-              colaboraciones.
+              {t.contact.body}
             </p>
 
             {/* CONTACTOS */}
@@ -273,7 +272,7 @@ ${message}
                     marginBottom: "7px",
                   }}
                 >
-                  Nombre
+                  {t.contact.name}
                 </label>
 
                 <input
@@ -281,7 +280,7 @@ ${message}
                   name="name"
                   type="text"
                   required
-                  placeholder="Tu nombre"
+                  placeholder={t.contact.phName}
                   style={{
                     width: "100%",
 
@@ -326,7 +325,7 @@ ${message}
                     marginBottom: "7px",
                   }}
                 >
-                  Email
+                  {t.contact.email}
                 </label>
 
                 <input
@@ -334,7 +333,7 @@ ${message}
                   name="email"
                   type="email"
                   required
-                  placeholder="tu@email.com"
+                  placeholder={t.contact.phEmail}
                   style={{
                     width: "100%",
 
@@ -384,7 +383,7 @@ ${message}
                   marginBottom: "7px",
                 }}
               >
-                Asunto
+                {t.contact.subject}
               </label>
 
               <input
@@ -392,7 +391,7 @@ ${message}
                 name="subject"
                 type="text"
                 required
-                placeholder="¿En qué puedo ayudarte?"
+                placeholder={t.contact.phSubject}
                 style={{
                   width: "100%",
 
@@ -441,14 +440,14 @@ ${message}
                   marginBottom: "7px",
                 }}
               >
-                Mensaje
+                {t.contact.message}
               </label>
 
               <textarea
                 id="contact-message"
                 name="message"
                 required
-                placeholder="Cuéntame sobre tu proyecto..."
+                placeholder={t.contact.phMessage}
                 rows={4}
                 style={{
                   width: "100%",
@@ -542,7 +541,7 @@ ${message}
             >
               <FiSend size={15} />
 
-              Enviar mensaje
+              {t.contact.send}
             </button>
           </form></Reveal>
         </div>

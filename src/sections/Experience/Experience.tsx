@@ -1,11 +1,15 @@
+import { useLang } from "@/i18n/LangProvider";
 import { FiBriefcase, FiCheck } from "react-icons/fi";
 
 import { Reveal } from "@/components/ui/Reveal";
-import { experiences } from "../../content/experience";
+import { experiences as experiencesEs } from "../../content/experience";
+import { experiencesEn, localize } from "@/i18n/content-en";
 
 const ACC = ["#4fc3f7", "#9b7bea", "#00ffaa"];
 
 export function Experience() {
+  const { t, lang } = useLang();
+  const experiences = localize(experiencesEs, experiencesEn, lang);
   return (
     <section
       id="experience"
@@ -73,7 +77,7 @@ export function Experience() {
               }}
             />
 
-            // experiencia
+            {t.experience.label}
           </span>
 
           {/* Título */}
@@ -95,7 +99,7 @@ export function Experience() {
               letterSpacing: "-0.02em",
             }}
           >
-            Mi experiencia
+            {t.experience.title}
           </h2>
 
           {/* Descripción */}
@@ -113,8 +117,7 @@ export function Experience() {
               lineHeight: 1.8,
             }}
           >
-            Recorrido profesional y aprendizajes en el mundo del desarrollo
-            de software.
+            {t.experience.subtitle}
           </p>
         </div></Reveal>
 

@@ -1,9 +1,11 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Reveal } from "@/components/ui/Reveal";
 import { AboutCards } from './AboutCards'
 import { AboutIntro } from './AboutIntro'
 import { AboutStats } from './AboutStats'
 
 function SectionTitle() {
+  const { t } = useLang();
   return (
     <Reveal variant="blur">
     <div
@@ -40,7 +42,7 @@ function SectionTitle() {
           }}
         />
 
-        // sobre mí
+        {t.about.label}
       </span>
 
       <h2
@@ -54,7 +56,7 @@ function SectionTitle() {
           letterSpacing: '-0.02em',
         }}
       >
-        Conoce un poco sobre mí
+        {t.about.title}
       </h2>
     </div>
     </Reveal>

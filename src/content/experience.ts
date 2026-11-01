@@ -1,32 +1,6 @@
 import type { Experience } from "../types/experience";
 
 export const experiences: Experience[] = [
-  
-  {
-    id: "projects",
-    period: "2022 - Presente",
-    position: "Desarrollador de Software",
-    company: "Proyectos Académicos y Personales",
-    type: "Freelance / Personal",
-
-    description:
-      "Desarrollo de aplicaciones web y móviles para clientes y proyectos propios, adquiriendo experiencia en múltiples stacks tecnológicos.",
-
-    achievements: [
-      "Desarrollo de aplicaciones móviles con Flutter y Dart",
-      "Creación de aplicaciones web full stack",
-      "Diseño de bases de datos relacionales y NoSQL",
-      "Implementación de autenticación y sistemas de autorización",
-    ],
-
-    technologies: [
-      "React",
-      "Flutter",
-      "Node.js",
-      "MongoDB",
-    ],
-  },
-  
   {
     id: "urasoft",
     period: "Ene 2026 - Sep 2026",
@@ -78,4 +52,28 @@ export const experiences: Experience[] = [
   ],
 },
 
+  {
+    id: "projects",
+    period: "2022 - Presente",
+    position: "Desarrollador de Software",
+    company: "Proyectos Académicos y Personales",
+    type: "Freelance / Personal",
+
+    description:
+      "Desarrollo de aplicaciones web y móviles para clientes y proyectos propios, adquiriendo experiencia en múltiples stacks tecnológicos.",
+
+    achievements: [
+      "Desarrollo de aplicaciones móviles con Flutter y Dart",
+      "Creación de aplicaciones web full stack",
+      "Diseño de bases de datos relacionales y NoSQL",
+      "Implementación de autenticación y sistemas de autorización",
+    ],
+
+    technologies: [
+      "React",
+      "Flutter",
+      "Node.js",
+      "MongoDB",
+    ],
+  },
 ];

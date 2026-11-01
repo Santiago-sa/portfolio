@@ -1,7 +1,9 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Container } from "@/components/layout/Container";
 import { HeroVisual } from "./components/HeroVisual";
 
 export function Hero() {
+  const { t } = useLang();
   return (
     <section
       id="inicio"
@@ -49,7 +51,7 @@ export function Hero() {
                   bg-mint
                 "
               />
-              Disponible para nuevas oportunidades
+              {t.hero.available}
             </div>
 
             {/* Small introduction */}
@@ -63,7 +65,7 @@ export function Hero() {
                 text-[#8585a5]
               "
             >
-              Hola, soy
+              {t.hero.greeting}
             </p>
 
             {/* Name */}
@@ -100,7 +102,7 @@ export function Hero() {
                 text-[clamp(11px,1.4vw,14px)]
               "
             >
-              <span className="text-cyan">{"<Ingeniero Informático"}</span>
+              <span className="text-cyan">{"<" + t.hero.role}</span>
 
               <span className="text-[#6b6b8c]">{" / "}</span>
 
@@ -121,8 +123,7 @@ export function Hero() {
                 text-[#8585a5]
               "
             >
-              Construyo aplicaciones web y móviles modernas, escalables y
-              centradas en resolver problemas reales.
+              {t.hero.tagline}
             </p>
 
             {/* Actions */}
@@ -160,7 +161,7 @@ export function Hero() {
                   hover:shadow-[0_10px_28px_rgba(0,212,255,0.35)]
                 "
               >
-                Ver proyectos
+                {t.hero.btnProjects}
                 <span className="text-lg">→</span>
               </a>
 
@@ -186,7 +187,7 @@ export function Hero() {
                   hover:text-cyan
                 "
               >
-                Contactarme
+                {t.hero.btnContact}
               </a>
 
               {/* CV */}
@@ -214,7 +215,7 @@ export function Hero() {
                 "
               >
                 <span>↓</span>
-                Descargar CV
+                {t.hero.btnCV}
               </a>
             </div>
 
@@ -241,11 +242,11 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    20+
+                    6+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Proyectos
+                    {t.hero.statProjects}
                   </div>
                 </div>
 
@@ -253,11 +254,11 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    15+
+                    10+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Tecnologías
+                    {t.hero.statTech}
                   </div>
                 </div>
 
@@ -269,7 +270,7 @@ export function Hero() {
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">
-                    Años exp.
+                    {t.hero.statYears}
                   </div>
                 </div>
               </div>
@@ -313,7 +314,7 @@ export function Hero() {
           hover:text-[#7070a0]
         "
       >
-        Desplázate para explorar
+        {t.hero.scroll}
         <span className="text-[16px] leading-none">⌄</span>
       </button>
     </section>

@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Reveal } from '@/components/ui/Reveal'
 
 const technologies = [
@@ -10,6 +11,7 @@ const technologies = [
 ]
 
 export function AboutIntro() {
+  const { t } = useLang();
   return (
     <div>
       <Reveal
@@ -24,10 +26,7 @@ export function AboutIntro() {
             marginBottom: '18px',
           }}
         >
-          Soy Ingeniero Informático apasionado por el desarrollo de
-          software y la creación de soluciones digitales. Me especializo
-          en construir aplicaciones web y móviles, trabajando tanto en
-          frontend como backend.
+          {t.about.p1}
         </p>
 
         <p
@@ -38,9 +37,7 @@ export function AboutIntro() {
             marginBottom: '28px',
           }}
         >
-          Me formé en el Politécnico Colombiano Jaime Isaza Cadavid,
-          donde desarrollé una base sólida en ingeniería de software,
-          bases de datos y arquitectura de sistemas.
+          {t.about.p2}
         </p>
 
         <div

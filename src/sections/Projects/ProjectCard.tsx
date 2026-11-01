@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 import type { Project } from "../../types/projects";
@@ -10,6 +11,7 @@ const ACCENTS = {
 } as const;
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { t } = useLang();
   const accent = ACCENTS[project.accent];
 
   return (
@@ -64,17 +66,17 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-{/* 
-        {(project.repoUrl || project.liveUrl) && (
+
+        {/* {(project.repoUrl || project.liveUrl) && (
           <div style={{ display: "flex", gap: "16px" }}>
             {project.repoUrl && (
               <a href={project.repoUrl} target="_blank" rel="noreferrer" className="project-link">
-                <FiGithub size={14} /> Código
+                <FiGithub size={14} /> {t.projects.code}
               </a>
             )}
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noreferrer" className="project-link">
-                <FiExternalLink size={14} /> Ver demo
+                <FiExternalLink size={14} /> {t.projects.demo}
               </a>
             )}
           </div>

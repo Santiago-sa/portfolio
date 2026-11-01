@@ -7,11 +7,11 @@ export const projects: Project[] = [
     category: "Aplicación web · Panel administrativo",
     description:
       "Panel web para el préstamo e inventario de equipos de cómputo de una universidad: solicitudes con confirmación por correo, mantenimiento y control de devoluciones.",
-    technologies: ["React", "TypeScript", "NestJS", "Drizzle ORM", "PostgreSQL"],
+    technologies: ["React", "TypeScript", "NestJS", "Drizzle ORM"],
     image: "/projects/lendit.webp",
     imageMobile: "/projects/lendit-mobile.webp",
     repoUrl: "https://github.com/Santiago-sa/lendit_front",
-    previewUrl: "lendit",
+    previewUrl: "admin.lendit.app",
     accent: "cyan",
   },
   {
@@ -20,10 +20,10 @@ export const projects: Project[] = [
     category: "Aplicación web · Restaurantes",
     description:
       "Sistema de comandas por QR: el cliente escanea el código de su mesa, pide desde el menú y paga su cuenta; la cocina recibe los pedidos en vivo en un tablero por estación, con caja, reportes y gestión de menú y mesas.",
-    technologies: ["React", "TypeScript", "Vite", "Socket.IO", "NestJS", "Drizzle ORM", "PostgreSQL", "Wompi"],
+    technologies: ["React", "TypeScript", "Vite", "Socket.IO", "React Router", "NestJS"],
     image: "/projects/comandas.webp",
     imageMobile: "/projects/comandas-mobile.webp",
-    previewUrl: "comandas Qr",
+    previewUrl: "comandas.app",
     repoUrl: "https://github.com/Santiago-sa/comandas-front",
     accent: "violet",
   },

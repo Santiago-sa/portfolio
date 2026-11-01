@@ -1,9 +1,11 @@
+import { useLang } from "@/i18n/LangProvider";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
 import { footerNavigation, footerSocials } from "@/content/footer";
 
 export function Footer() {
+  const { t, tr } = useLang();
   const currentYear = new Date().getFullYear();
 
   const getSocialIcon = (label: string) => {
@@ -82,8 +84,7 @@ export function Footer() {
                 lineHeight: 1.75,
               }}
             >
-              Construyendo aplicaciones web y móviles modernas con pasión y
-              precisión técnica.
+              {t.footer.tagline}
             </p>
           </div>
 
@@ -104,7 +105,7 @@ export function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Navegación
+              {t.footer.nav}
             </span>
 
             <nav
@@ -116,7 +117,7 @@ export function Footer() {
             >
               {footerNavigation.map((link) => (
                 <a
-                  key={link.label}
+                  key={tr(link.label)}
                   href={link.href}
                   style={{
                     width: "fit-content",
@@ -156,7 +157,7 @@ export function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Redes
+              {t.footer.social}
             </span>
 
             <nav
@@ -243,8 +244,7 @@ export function Footer() {
               fontSize: "11px",
             }}
           >
-            © {currentYear} Santiago Alvarez Hernández. Todos los derechos
-            reservados.
+            © {currentYear} Santiago Alvarez Hernández. {t.footer.rights}
           </span>
 
           {/* <span

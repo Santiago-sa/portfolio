@@ -1,7 +1,9 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Reveal } from "../../components/ui/Reveal";
 import { ProjectsCarousel } from "./ProjectsCarousel";
 
 export function Projects() {
+  const { t } = useLang();
   return (
     <section
       id="proyectos"
@@ -37,7 +39,7 @@ export function Projects() {
                   boxShadow: "0 0 6px #00d4ff",
                 }}
               />
-              {"// proyectos"}
+              {t.projects.label}
             </span>
 
             <h2
@@ -51,7 +53,7 @@ export function Projects() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Proyectos destacados
+              {t.projects.title}
             </h2>
 
             <p
@@ -63,7 +65,7 @@ export function Projects() {
                 lineHeight: 1.8,
               }}
             >
-              Una vista rápida de lo que he construido: qué hace cada proyecto y con qué tecnologías.
+              {t.projects.subtitle}
             </p>
           </div>
         </Reveal>

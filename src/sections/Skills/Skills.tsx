@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { useState } from "react";
 import { Reveal } from "../../components/ui/Reveal";
 
@@ -22,6 +23,7 @@ const categoryLabels: Record<SkillCategory, string> = {
 };
 
 export function Skills() {
+  const { t, tr } = useLang();
   const [activeCategory, setActiveCategory] =
     useState<SkillCategory>("Frontend");
   const [hovered, setHovered] = useState<string | null>(null);
@@ -94,7 +96,7 @@ export function Skills() {
               }}
             />
 
-           // tecnologías
+           {t.skills.label}
           </span>
 
           {/* Título */}
@@ -110,7 +112,7 @@ export function Skills() {
               letterSpacing: "-0.02em",
             }}
           >
-            Tecnologías y herramientas
+            {t.skills.title}
           </h2>
 
           {/* Descripción */}
@@ -124,8 +126,7 @@ export function Skills() {
               lineHeight: 1.8,
             }}
           >
-            Stack que uso para construir soluciones robustas, escalables y
-            modernas.
+            {t.skills.subtitle}
           </p>
         </div></Reveal>
 
@@ -180,7 +181,7 @@ export function Skills() {
                   backdropFilter: "blur(4px)",
                 }}
               >
-                {categoryLabels[category]}
+                {tr(categoryLabels[category])}
               </button>
             );
           })}

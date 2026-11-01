@@ -1,7 +1,9 @@
+import { useLang } from "@/i18n/LangProvider";
 import { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-import { projects } from "../../content/projects";
+import { projects as projectsEs } from "../../content/projects";
+import { localize, projectsEn } from "@/i18n/content-en";
 import { ProjectCard } from "./ProjectCard";
 
 const INTERVAL = 5500;
@@ -20,6 +22,8 @@ function usePerView() {
 }
 
 export function ProjectsCarousel() {
+  const { lang } = useLang();
+  const projects = localize(projectsEs, projectsEn, lang);
   const n = projects.length;
   const perView = usePerView();
   const rotates = n > perView;

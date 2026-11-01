@@ -1,3 +1,4 @@
+import { useLang } from "@/i18n/LangProvider";
 import { Container } from "@/components/layout/Container";
 import { useScroll } from "@/components/layout/ScrollProvider";
 
@@ -23,12 +24,17 @@ const navigationItems = [
     href: "#proyectos",
   },
   {
+    label: "Proceso",
+    href: "#proceso",
+  },
+  {
     label: "Contacto",
     href: "#contact",
   },
 ];
 
 export function Navbar() {
+  const { tr, lang, setLang } = useLang();
   const scrolled = useScroll().scrollPct > 0.01;
 
   return (
@@ -83,7 +89,7 @@ export function Navbar() {
                     hover:text-[#e8e8f0]
                   "
                 >
-                  {item.label}
+                  {tr(item.label)}
                 </a>
               </li>
             ))}
@@ -97,11 +103,9 @@ export function Navbar() {
             <div className="hidden items-center gap-2 font-mono text-[10px] sm:flex">
               <button
                 type="button"
-                className="
-                  text-cyan
-                  transition-colors
-                  hover:text-white
-                "
+                onClick={() => setLang("es")}
+                aria-pressed={lang === "es"}
+                className={`transition-colors hover:text-white ${lang === "es" ? "text-cyan" : "text-[#4848a0]"}`}
               >
                 ES
               </button>
@@ -110,11 +114,9 @@ export function Navbar() {
 
               <button
                 type="button"
-                className="
-                  text-[#4848a0]
-                  transition-colors
-                  hover:text-white
-                "
+                onClick={() => setLang("en")}
+                aria-pressed={lang === "en"}
+                className={`transition-colors hover:text-white ${lang === "en" ? "text-cyan" : "text-[#4848a0]"}`}
               >
                 EN
               </button>
@@ -145,14 +147,14 @@ export function Navbar() {
                 sm:inline-flex
               "
             >
-              Hablemos
+              {tr("Hablemos")}
             </a>
 
             {/* Mobile button */}
 
             <button
               type="button"
-              aria-label="Abrir menú"
+              aria-label={tr("Abrir menú")}
               className="
                 flex
                 h-9
