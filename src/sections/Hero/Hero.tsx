@@ -192,8 +192,8 @@ export function Hero() {
               {/* CV */}
 
               <a
-                href="/cv.pdf"
-                download
+                href={`${import.meta.env.BASE_URL}cv/CV_SantiagoAlvarez.pdf`}
+                download="CV_SantiagoAlvarez.pdf"
                 className="
                   inline-flex
                   items-center
@@ -241,7 +241,7 @@ export function Hero() {
 
                 <div>
                   <div className="font-display text-[22px] font-bold tracking-[-0.02em] text-cyan">
-                    5+
+                    20+
                   </div>
 
                   <div className="mt-1 text-[11px] text-[#666685]">

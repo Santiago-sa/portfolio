@@ -23,10 +23,6 @@ const navigationItems = [
     href: "#proyectos",
   },
   {
-    label: "Proceso",
-    href: "#proceso",
-  },
-  {
     label: "Contacto",
     href: "#contact",
   },

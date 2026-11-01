@@ -565,3 +565,36 @@
   to { transform: scaleX(1); }
 }
 
+
+/* Experiencia: línea de tiempo de 3 columnas */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 42px;
+}
+
+.exp-line {
+  position: absolute;
+  top: 0;
+  left: 16.66%;
+  right: 16.66%;
+  height: 1px;
+  background: rgba(120, 120, 170, 0.18);
+}
+
+.exp-dot {
+  position: absolute;
+  top: -51px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid #05050d;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1000px) {
+  .exp-grid { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
+  .exp-line, .exp-dot { display: none; }
+}
