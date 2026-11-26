@@ -314,7 +314,6 @@
   justify-content: center;
 }
 
-
 .project-card {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -506,8 +505,13 @@
   height: 283px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 60% 70% at 50% 95%, rgba(0, 255, 170, 0.2), transparent 70%),
-    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 18px 18px,
+    radial-gradient(
+      ellipse 60% 70% at 50% 95%,
+      rgba(0, 255, 170, 0.2),
+      transparent 70%
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 18px
+      18px,
     linear-gradient(160deg, #0b1f18, #07070f 70%);
 }
 
@@ -517,7 +521,9 @@
   overflow: hidden;
   border: 5px solid #1c1c2e;
   border-radius: 28px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
   transition: transform 4.5s ease-in-out;
 }
 
@@ -561,16 +567,23 @@
 }
 
 @keyframes dotFill {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
-
 
 /* Experiencia: línea de tiempo de 3 columnas */
 .exp-grid {
+  --exp-columns: 3;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--exp-columns), minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
+  max-width: calc(var(--exp-columns) * 370px + (var(--exp-columns) - 1) * 20px);
+  margin: 0 auto;
   padding-top: 42px;
 }
 
@@ -595,6 +608,13 @@
 }
 
 @media (max-width: 1000px) {
-  .exp-grid { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
-  .exp-line, .exp-dot { display: none; }
+  .exp-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 600px;
+    padding-top: 0;
+  }
+  .exp-line,
+  .exp-dot {
+    display: none;
+  }
 }
