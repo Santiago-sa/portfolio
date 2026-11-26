@@ -2,17 +2,39 @@ import type { Project } from "../../types/projects";
 import { ProjectPreview } from "./ProjectPreview";
 
 const ACCENTS = {
-  cyan: { solid: "#4fc3f7", soft: "rgba(79,195,247,0.05)", line: "rgba(79,195,247,0.2)" },
-  mint: { solid: "#00ffaa", soft: "rgba(0,255,170,0.05)", line: "rgba(0,255,170,0.2)" },
-  violet: { solid: "#9b7bea", soft: "rgba(155,123,234,0.05)", line: "rgba(155,123,234,0.2)" },
+  cyan: {
+    solid: "#4fc3f7",
+    soft: "rgba(79,195,247,0.05)",
+    line: "rgba(79,195,247,0.2)",
+  },
+  mint: {
+    solid: "#00ffaa",
+    soft: "rgba(0,255,170,0.05)",
+    line: "rgba(0,255,170,0.2)",
+  },
+  violet: {
+    solid: "#9b7bea",
+    soft: "rgba(155,123,234,0.05)",
+    line: "rgba(155,123,234,0.2)",
+  },
 } as const;
 
 export function ProjectCard({ project }: { project: Project }) {
   const accent = ACCENTS[project.accent];
 
   return (
-    <article className="project-card" style={{ borderTop: `2px solid ${accent.solid}` }}>
-      <ProjectPreview title={project.title} image={project.image} imageMobile={project.imageMobile} previewUrl={project.previewUrl} layout={project.layout} images={project.images} />
+    <article
+      className="project-card"
+      style={{ borderTop: `2px solid ${accent.solid}` }}
+    >
+      <ProjectPreview
+        title={project.title}
+        image={project.image}
+        imageMobile={project.imageMobile}
+        previewUrl={project.previewUrl}
+        layout={project.layout}
+        images={project.images}
+      />
 
       <div className="project-card-body">
         <span
@@ -40,11 +62,25 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.title}
         </h3>
 
-        <p style={{ margin: "0 0 12px", color: "#9090b2", fontSize: "12.5px", lineHeight: 1.7 }}>
+        <p
+          style={{
+            margin: "0 0 12px",
+            color: "#9090b2",
+            fontSize: "12.5px",
+            lineHeight: 1.7,
+          }}
+        >
           {project.description}
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "14px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "6px",
+            marginBottom: "14px",
+          }}
+        >
           {project.technologies.map((tech) => (
             <span
               key={tech}
