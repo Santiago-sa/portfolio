@@ -77,8 +77,8 @@ function MobileAppPreview({ title, images }: { title: string; images: string[] }
   return (
     <div className="project-preview">
       <div className="project-mobile-stage">
-        <span className="project-chip float-a" style={{ left: 14, top: "14%" }}>Flutter</span>
-        <span className="project-chip float-b" style={{ right: 14, bottom: "24%" }}>Offline</span>
+        {/* <span className="project-chip float-a" style={{ left: 14, top: "14%" }}>Flutter</span> */}
+        {/* <span className="project-chip float-b" style={{ right: 14, bottom: "24%" }}>Offline</span> */}
         {images.map((src, i) => (
           <div key={src} className="project-mobile-phone">
             <img

@@ -33,7 +33,7 @@ export const projects: Project[] = [
     category: "Aplicación móvil · Agricultura orgánica",
     description:
       "App móvil en Flutter para agricultura orgánica y bioproductos. Ofrece documentos educativos en PDF e imágenes disponibles sin conexión y una calculadora de formulaciones según volumen, tipo de bomba y cultivo (plátano, aguacate).",
-    technologies: ["Flutter", "Dart"],
+    technologies: ["Flutter", "Dart", "Offline"],
     layout: "mobile",
     images: ["/projects/agrovida-inicio.webp", "/projects/agrovida-calculadora.webp"],
     image: "/projects/agrovida-inicio.webp",
