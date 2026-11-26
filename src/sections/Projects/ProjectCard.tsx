@@ -1,6 +1,3 @@
-import { useLang } from "@/i18n/LangProvider";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
-
 import type { Project } from "../../types/projects";
 import { ProjectPreview } from "./ProjectPreview";
 
@@ -11,7 +8,6 @@ const ACCENTS = {
 } as const;
 
 export function ProjectCard({ project }: { project: Project }) {
-  const { t } = useLang();
   const accent = ACCENTS[project.accent];
 
   return (
