@@ -84,7 +84,8 @@ export function Hero() {
               <span
                 className="block bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: "linear-gradient(135deg,#00d4ff 0%,#a78bfa 50%,#00ffaa 100%)",
+                  backgroundImage:
+                    "linear-gradient(135deg,#00d4ff 0%,#a78bfa 50%,#00ffaa 100%)",
                   backgroundSize: "200% 200%",
                   animation: "gradShift 6s ease infinite",
                 }}
@@ -168,7 +169,7 @@ export function Hero() {
               {/* Contact */}
 
               <a
-                href="#contacto"
+                href="#contact"
                 className="
                   inline-flex
                   items-center

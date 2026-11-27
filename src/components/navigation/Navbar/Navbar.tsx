@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLang } from "@/i18n/LangProvider";
 import { Container } from "@/components/layout/Container";
 import { useScroll } from "@/components/layout/ScrollProvider";
@@ -36,6 +37,9 @@ const navigationItems = [
 export function Navbar() {
   const { tr, lang, setLang } = useLang();
   const scrolled = useScroll().scrollPct > 0.01;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header
@@ -154,7 +158,10 @@ export function Navbar() {
 
             <button
               type="button"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-label={tr("Abrir menú")}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
               className="
                 flex
                 h-9
@@ -168,10 +175,83 @@ export function Navbar() {
                 lg:hidden
               "
             >
-              <span className="text-lg">☰</span>
+              <span className="text-lg" aria-hidden="true">
+                {isMobileMenuOpen ? "✕" : "☰"}
+              </span>
             </button>
           </div>
         </nav>
+
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-menu"
+            className="
+              border-t
+              border-white/10
+              pb-5
+              pt-4
+              lg:hidden
+            "
+          >
+            <ul className="flex flex-col gap-3">
+              {navigationItems.map((item) => (
+                <li key={`mobile-${item.href}`}>
+                  <a
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    className="
+                      block
+                      rounded-md
+                      border
+                      border-transparent
+                      px-3
+                      py-2
+                      font-mono
+                      text-[11px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.12em]
+                      text-[#b8b8d0]
+                      transition-colors
+                      duration-200
+                      hover:border-cyan/20
+                      hover:text-cyan
+                    "
+                  >
+                    {tr(item.label)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="#contact"
+              onClick={closeMobileMenu}
+              className="
+                mt-4
+                inline-flex
+                rounded-lg
+                border
+                border-cyan/20
+                bg-cyan/5
+                px-4
+                py-2.5
+                font-mono
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-[0.12em]
+                text-cyan
+                transition-all
+                duration-200
+                hover:border-cyan/40
+                hover:bg-cyan/10
+              "
+            >
+              {tr("Hablemos")}
+            </a>
+          </div>
+        )}
       </Container>
     </header>
   );
